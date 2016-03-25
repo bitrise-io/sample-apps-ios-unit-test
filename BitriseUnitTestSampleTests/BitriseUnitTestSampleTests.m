@@ -28,7 +28,7 @@
 
 - (void)testSuccessExample
 {
-    XCTAssertTrue(YES, @"success");
+    XCTAssertTrue(NO, @"success");
 }
 
 //- (void)testFailExample
