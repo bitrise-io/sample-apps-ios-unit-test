@@ -42,6 +42,7 @@ workflows:
         - project_path: $BITRISE_PROJECT_PATH
         - scheme: $BITRISE_SCHEME
     - deploy-to-bitrise-io@1: {}
+    - chuck-norris@1: {}
     - cache-push@2: {}
 app:
   envs:
