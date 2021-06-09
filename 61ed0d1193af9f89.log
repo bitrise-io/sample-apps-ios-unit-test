@@ -1,0 +1,557 @@
+Agent version:	1.26.0
+Hostname:	prd-atl-std-y-xcode-12-4-210609142534-h7WyDtTpVPZh8Dwz6HTori.local
+Start time:	2021-06-09T14:29:00Z
+$ bitrise "run" "--config" "/var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/bitrise-agent770218730/bitrise.yml" "--inventory" "/var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/bitrise-agent770218730/bitrise.secrets.yml" "--json-params-base64" "eyJ3b3JrZmxvdyI6InByaW1hcnkifQ=="
+
+  ██████╗ ██╗████████╗██████╗ ██╗███████╗███████╗
+  ██╔══██╗██║╚══██╔══╝██╔══██╗██║██╔════╝██╔════╝
+  ██████╔╝██║   ██║   ██████╔╝██║███████╗█████╗
+  ██╔══██╗██║   ██║   ██╔══██╗██║╚════██║██╔══╝
+  ██████╔╝██║   ██║   ██║  ██║██║███████║███████╗
+  ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+[32;1m  version: 1.45.1[0m
+
+[36mINFO[0m[14:29:00] [33;1mbitrise runs in Secret Filtering mode[0m 
+[36mINFO[0m[14:29:00] [33;1mbitrise runs in CI mode[0m           
+[36mINFO[0m[14:29:00] Running workflow: [32;1mprimary[0m         
+
+[34;1mSwitching to workflow:[0m primary
+
+[36mINFO[0m[14:29:01] Step uses latest version -- Updating StepLib ... 
++------------------------------------------------------------------------------+
+| (0) activate-ssh-key@4                                                       |
++------------------------------------------------------------------------------+
+| id: activate-ssh-key                                                         |
+| version: 4.0.6                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:29:10Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[33mWARN[0m[14:29:10] The step's (activate-ssh-key@4) Run-If expression evaluated to false - skipping 
+[36mINFO[0m[14:29:10] The Run-If expression was: [34;1m{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}[0m 
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [34;1m-[0m | [34;1mactivate-ssh-key@4[0m                                            | 9.64 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (1) git-clone@6                                                              |
++------------------------------------------------------------------------------+
+| id: git-clone                                                                |
+| version: 6.0.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:29:12Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- RepositoryURL: https://github.com/kerikatavirag/sample-apps-ios-unit-test.git
+- CloneIntoDir: /Users/vagrant/git
+- Commit: 
+- Tag: 
+- Branch: master
+- PRDestBranch: 
+- PRID: 0
+- PRSourceRepositoryURL: 
+- PRMergeBranch: 
+- PRHeadBranch: 
+- ResetRepository: false
+- CloneDepth: 0
+- FetchTags: false
+- SubmoduleUpdateDepth: 0
+- ShouldMergePR: true
+- SparseDirectories: []
+- BuildURL: https://app.bitrise.io/build/61ed0d1193af9f89
+- BuildAPIToken: [REDACTED]
+- UpdateSubmodules: true
+- ManualMerge: true
+
+[34;1m$ git "init"[0m
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /Users/vagrant/git/.git/
+
+[34;1m$ git "remote" "add" "origin" "https://github.com/kerikatavirag/sample-apps-ios-unit-test.git"[0m
+
+[34;1m$ git "fetch" "--jobs=10" "--no-tags" "origin" "refs/heads/master"[0m
+From https://github.com/kerikatavirag/sample-apps-ios-unit-test
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+
+[34;1m$ git "checkout" "master"[0m
+Already on 'master'
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+[34;1m$ git "merge" "origin/master"[0m
+Already up to date.
+
+[34;1m$ git "submodule" "update" "--init" "--recursive" "--jobs=10"[0m
+[34;1m
+Exporting git logs
+[0m
+[34;1m$ git "log" "-1" "--format=%ae" &> out[0m
+=> GIT_CLONE_COMMIT_AUTHOR_EMAIL
+   value: viktor.benei@gmail.com
+
+[34;1m$ git "log" "-1" "--format=%cn" &> out[0m
+=> GIT_CLONE_COMMIT_COMMITER_NAME
+   value: Viktor Benei
+
+[34;1m$ git "log" "-1" "--format=%ce" &> out[0m
+=> GIT_CLONE_COMMIT_COMMITER_EMAIL
+   value: viktor.benei@gmail.com
+
+[34;1m$ git "log" "-1" "--format=%H" &> out[0m
+=> GIT_CLONE_COMMIT_HASH
+   value: c4e411abf80653cd630a0838dd76ecda3af76e3f
+
+[34;1m$ git "log" "-1" "--format=%s" &> out[0m
+=> GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+   value: README: note about branches
+
+[34;1m$ git "log" "-1" "--format=%b" &> out[0m
+=> GIT_CLONE_COMMIT_MESSAGE_BODY
+   value: 
+
+[34;1m$ git "log" "-1" "--format=%an" &> out[0m
+=> GIT_CLONE_COMMIT_AUTHOR_NAME
+   value: Viktor Benei
+
+[34;1m$ git "rev-list" "HEAD" "--count" &> out[0m
+=> GIT_CLONE_COMMIT_COUNT
+   value: 6
+
+[32;1m
+Success[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@6[0m                                                   | 10.87 sec|
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (2) cache-pull@2                                                             |
++------------------------------------------------------------------------------+
+| id: cache-pull                                                               |
+| version: 2.5.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:29:23Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- CacheAPIURL: [REDACTED]
+- DebugMode: false
+- AllowFallback: true
+- ExtractToRelativePath: false
+- StackID: osx-xcode-12.4.x
+- BuildSlug: 61ed0d1193af9f89
+
+[34;1mDownloading remote cache archive[0m
+[31;1mFailed to get cache download url: build cache not found: probably cache not initialised yet (first cache push initialises the cache), nothing to worry about ;)[0m
+[33mWARN[0m[14:29:26] Step (cache-pull@2) failed, but was marked as skippable 
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [33;1m![0m | [33;1mcache-pull@2 (exit code: 1)[0m                                   | 5.10 sec |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/bitrise-steplib/steps-cache-pull/issues    |
+| Source: https://github.com/bitrise-steplib/steps-cache-pull.git              |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (3) Do anything with Script step                                             |
++------------------------------------------------------------------------------+
+| id: script                                                                   |
+| version: 1.1.6                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2021-06-09T14:29:28Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
++ echo 'Hello World!'
+Hello World!
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mDo anything with Script step[0m                                  | 2.31 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (4) certificate-and-profile-installer@1                                      |
++------------------------------------------------------------------------------+
+| id: certificate-and-profile-installer                                        |
+| version: 1.10.3                                                              |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:29:31Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[14:29:31]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+
+[34;1mConfigs:[0m
+ - CertificateURL: 
+ - CertificatePassphrase: 
+ - ProvisioningProfileURL: 
+ - InstallDefaults: yes
+ - DefaultCertificateURL: https://sto***p12
+ - DefaultCertificatePassphrase: ***
+ - DefaultProvisioningProfileURL: https://sto***ion
+ - KeychainPath: /Users/vagrant/Library/Keychains/login.keychain
+ - KeychainPassword: ***
+
+Default Certificate given
+Provided Certificate count: 1
+Default Provisioning Profile given
+Provided Provisioning Profile count: 1
+
+[33;1mKeychain (/Users/vagrant/Library/Keychains/login.keychain) does not exist[0m
+ Checking (/Users/vagrant/Library/Keychains/login.keychain-db)
+
+[34;1mDownloading & installing Certificate(s)[0m
+
+Downloading certificate: 1/1
+Installing downloaded certificates
+
+[32;1miPhone Developer: Dev Portal Bot Bitrise (E89JV3W9K4)[0m
+serial: 149308669917794252413558859495036042076
+team: BITFALL FEJLESZTO KORLATOLT FELELOSSEGU TARSASAG (72SA8V3WYL)
+expire: 2022-04-16 12:26:25 +0000 UTC
+
+
+[34;1mDownloading & installing Provisioning Profile(s)[0m
+
+Downloading provisioning profile: 1/1
+Moving it to: /Users/vagrant/Library/MobileDevice/Provisioning Profiles/e682b378-3286-41b8-aeeb-4b4398c0e025.mobileprovision
+
+[32;1mBitriseBot-Wildcard (e682b378-3286-41b8-aeeb-4b4398c0e025)[0m
+exportType: development
+team: BITFALL FEJLESZTO KORLATOLT FELELOSSEGU TARSASAG (72SA8V3WYL)
+bundleID: *
+capabilities:
+- keychain-access-groups: [72SA8V3WYL.* com.apple.token]
+certificates:
+- iPhone Developer: Dev Portal Bot Bitrise (E89JV3W9K4)
+  serial: 149308669917794252413558859495036042076
+  teamID: 72SA8V3WYL
+devices:
+- e56d5afda6c15403a8bcdcc9928158ba00000000
+- e1017eeda622ceca11bc9e969b6e0824aa75f882
+- f826e0b1578e953c8014e7b8cf012faff72a718f
+- 216848e81881e08d816cfe195adb9dfddffd5e2d
+- de5398c3e4557950966438a6d167195b8f521e22
+- 07db2724ed9b24368fb51db1ad3405a75229d9a6
+- 21bbc342c380001152f6f44055d3e8b3f4229740
+- 4a30198fe63b2872c8da5d81f346d890d786a442
+- da80875ac8b757fe3be41ff0c7d69c769c568203
+- 6dd4effea10c016decccc2fd9cb42e72b7587dfd
+- cf6c11f678ddf50a39e73b07d7719a6874e3dcbe
+- 672e61a60c55efcb03f74cc149eb60e1be4f1dd2
+- af875aa648d99e0be45a4fae1e338ef59ae4d525
+- 1a70123535cdd205f5bee81e352769a55306ea3f
+- 9883a4cc51551a2016c7e1ec5078e99ac180d0a5
+- 954ca26571f23f2c4d2c02321573aaa0f49e372a
+- 00008020-000B398E01BA002E
+- 71153a920968f2842d360db00b4d3bc46c92f511
+- 8c04c166b6e77fdee33dab932ef23e5e0e347da3
+- 20d26942ff4e128132ed51e9663a86a5d6d2213a
+- d45beca0f3ff9c4b71766f4688845c249aa307cb
+- f7fbd10ea86c16ec583500c004c985b36262dd0a
+- 1a70123535cdd205f5bee81e352769a55306ea3f
+- fd78102d2af0953be5356423812c5f049157273d
+- 71ae90911e73b76df6e99d0d713133c3e078418f
+- 00008030-000630C42610802E
+- b13813075ad9b298cb9a9f28555c49573d8bc322
+- d912377a132dd1c2cabc7166da1da98832c03fe3
+- 98bae88cd1280f11daf4b655389340ec3d22cf81
+- 54c3393c184b8f80e4c0f60a66e15f32864e742b
+- da74b2e910d15cb89de8d3cfa1c1604cce4e08a3
+- 00008030-000559E92123802E
+- d45b1dcecedb81abefddfb6fde522db8cbf59c96
+- 86a9d9132f8140777fb07d90ae020b27020d2a22
+- cf5d2c2570b190cdf0ce661b4883a5a8c5d5180c
+- 00008030-001469D61E00802E
+- 25dca6aa746a5433aab4802752ae0c64d3b0fed2
+- 1b78ac4bad2e8911139287ac5dd152fbe86eb2b9
+- db91983e1bb8b86609e6887a63a44f78a00b95c1
+- d45b1dcecedb81abefddfb6fde522db8cbf59c96
+- 00008020-000971A83A30003A
+- c8355ca6216a933f0069329b11509d3c195f1e3b
+- 5c90f844c0e1af21a179d203ac5417cec6f3f7e7
+- 00008020-0015543C3409002E
+- f7247f7e76096bdb52d23b73221c807f220c7d60
+- 5d5c3da9d66df9efdb9d97a0a335cd559a7d4755
+- 00008030-001C488214A0802E
+- 00008020-000A58AC14D1002E
+- e24e293730f3f37163aa965f1506396e6f4837eb
+- 00008020-00111C3C2201002E
+expire: 2022-04-16 14:09:19 +0000 UTC
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mcertificate-and-profile-installer@1[0m                           | 18.76 sec|
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (5) xcode-test@2                                                             |
++------------------------------------------------------------------------------+
+| id: xcode-test                                                               |
+| version: 2.6.2                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:30:14Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[14:30:18]  * [32;1m[OK][0m Step dependency (xcode) installed, available. 
+[36mINFO[0m[14:30:18]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+[34;1mConfigs:
+[0m- ProjectPath: BitriseUnitTestSample.xcodeproj
+- Scheme: BitriseUnitTestSample
+- SimulatorPlatform: iOS Simulator
+- SimulatorDevice: iPhone 8 Plus
+- SimulatorOsVersion: latest
+- OutputTool: xcpretty
+- IsCleanBuild: false
+- IsSingleBuild: true
+- ShouldBuildBeforeTest: true
+- ShouldRetryTestOnFail: false
+- GenerateCodeCoverageFiles: false
+- ExportUITestArtifacts: false
+- DisableIndexWhileBuilding: true
+- TestOptions: 
+- XcprettyTestOptions: --color --report html --output "/Users/vagrant/deploy/xcode-test-results-BitriseUnitTestSample.html"
+- Verbose: false
+- CollectSimulatorDiagnostics: never
+- HeadlessMode: true
+- CacheLevel: swift_packages
+- DeployDir: /Users/vagrant/deploy
+
+* action: -project
+- xcodebuildVersion: Xcode 12.4 (Build version 12D4e)
+
+[34;1mChecking if output tool (xcpretty) is installed[0m
+- xcprettyVersion: 0.3.0
+
+[34;1mSimulator infos[0m
+* simulator_name: iPhone 8 Plus, version: iOS 14.4, UDID: 64EF2367-44ED-45C2-9971-0F72F9D11602, status: Shutdown
+* device_destination: id=64EF2367-44ED-45C2-9971-0F72F9D11602
+
+[34;1mRunning the tests...[0m
+$ set -o pipefail && env "NSUnbufferedIO=YES" xcodebuild "-project" "/Users/vagrant/git/BitriseUnitTestSample.xcodeproj" "-scheme" "BitriseUnitTestSample" "build" "COMPILER_INDEX_STORE_ENABLE=NO" "test" "-destination" "id=64EF2367-44ED-45C2-9971-0F72F9D11602" "-resultBundlePath" "/var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/XCUITestOutput297290690/Test.xcresult" | xcpretty "--color" "--report" "html" "--output" "/Users/vagrant/deploy/xcode-test-results-BitriseUnitTestSample.html"
+
+    [33mThe iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.1, but the range of supported deployment target versions is 9.0 to 14.4.99. (in target 'BitriseUnitTestSample' from project 'BitriseUnitTestSample')[0m
+[33m▸[0m [39;1mPrecompiling[0m /Users/vagrant/git/BitriseUnitTestSample/BitriseUnitTestSample-Prefix.pch
+[33m▸[0m [39;1mCompiling[0m main.m
+[33m▸[0m [39;1mCompiling[0m MasterViewController.m
+
+[33m⚠️  [0m/Users/vagrant/git/BitriseUnitTestSample/MasterViewController.m:177:12: [33menumeration values 'NSFetchedResultsChangeMove' and 'NSFetchedResultsChangeUpdate' not handled in switch [-Wswitch][0m
+
+    switch(type) {
+[36m           ^[0m
+
+
+[33m▸[0m [39;1mCompiling[0m DetailViewController.m
+[33m▸[0m [39;1mCompiling[0m AppDelegate.m
+[33m▸[0m [39;1mLinking[0m BitriseUnitTestSample
+[33m▸[0m [39;1mCompiling[0m Main_iPhone.storyboard
+[33m▸[0m [39;1mCopying[0m InfoPlist.strings
+[33m▸[0m [39;1mCompiling[0m Main_iPad.storyboard
+[33m▸[0m [39;1mProcessing[0m BitriseUnitTestSample-Info.plist
+    [33mUser-supplied CFBundleIdentifier value 'Bitrise.BitriseUnitTestSample' in the Info.plist must be the same as the PRODUCT_BUNDLE_IDENTIFIER build setting value ''. (in target 'BitriseUnitTestSample' from project 'BitriseUnitTestSample')[0m
+    [33m'UILaunchImages' has been deprecated, use launch storyboards instead. (in target 'BitriseUnitTestSample' from project 'BitriseUnitTestSample')[0m
+[33m▸[0m [39;1mGenerating 'BitriseUnitTestSample.app.dSYM'[0m
+[33m▸[0m [39;1mTouching[0m BitriseUnitTestSample.app (in target 'BitriseUnitTestSample' from project 'BitriseUnitTestSample')
+[33m▸[0m [39;1mBuild[0m Succeeded
+    [33mThe iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.1, but the range of supported deployment target versions is 9.0 to 14.4.99. (in target 'BitriseUnitTestSampleTests' from project 'BitriseUnitTestSample')[0m
+    [33mThe iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.1, but the range of supported deployment target versions is 9.0 to 14.4.99. (in target 'BitriseUnitTestSample' from project 'BitriseUnitTestSample')[0m
+[33m▸[0m [39;1mLinking[0m BitriseUnitTestSample
+[33m▸[0m [39;1mGenerating 'BitriseUnitTestSample.app.dSYM'[0m
+[33m▸[0m [39;1mPrecompiling[0m /Users/vagrant/git/BitriseUnitTestSample/BitriseUnitTestSample-Prefix.pch
+[33m▸[0m [39;1mProcessing[0m BitriseUnitTestSampleTests-Info.plist
+    [33mUser-supplied CFBundleIdentifier value 'Bitrise.BitriseUnitTestSampleTests' in the Info.plist must be the same as the PRODUCT_BUNDLE_IDENTIFIER build setting value ''. (in target 'BitriseUnitTestSampleTests' from project 'BitriseUnitTestSample')[0m
+[33m▸[0m [39;1mCompiling[0m BitriseUnitTestSampleTests.m
+[33m▸[0m [39;1mLinking[0m BitriseUnitTestSampleTests
+[33m▸[0m [39;1mGenerating 'BitriseUnitTestSampleTests.xctest.dSYM'[0m
+[33m▸[0m [39;1mCopying[0m InfoPlist.strings
+[33m▸[0m [39;1mCopying[0m /Applications/Xcode-12.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib
+[33m▸[0m [39;1mCopying[0m /Applications/Xcode-12.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib
+[33m▸[0m [39;1mCopying[0m /Applications/Xcode-12.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework
+[33m▸[0m [39;1mCopying[0m /Applications/Xcode-12.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework
+[33m▸[0m [39;1mTouching[0m BitriseUnitTestSampleTests.xctest (in target 'BitriseUnitTestSampleTests' from project 'BitriseUnitTestSample')
+[39;1mAll tests[0m
+Test Suite [39;1mBitriseUnitTestSampleTests.xctest[0m started
+[39;1mBitriseUnitTestSampleTests[0m
+    [32;1m✓[0m testSuccessExample (0.002 seconds)
+
+
+[32;1m	 Executed 1 test, with 0 failures (0 unexpected) in 0.002 (0.005) seconds
+[0m
+[33m▸[0m [39;1mTest[0m Succeeded
+
+[34;1mExporting test results[0m
+[32;1m$ cp "-a" "/var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/XCUITestOutput297290690/Test.xcresult" "/var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/test_results591569031/test_result696836120/BitriseUnitTestSample/"[0m
+
+[34;1mXcode Test command succeeded.[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mxcode-test@2[0m                                                  | 4.1 min  |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (6) deploy-to-bitrise-io@1                                                   |
++------------------------------------------------------------------------------+
+| id: deploy-to-bitrise-io                                                     |
+| version: 1.13.2                                                              |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:33:57Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- BuildURL: https://app.bitrise.io/build/61ed0d1193af9f89
+- APIToken: [REDACTED]
+- IsCompress: false
+- ZipName: 
+- DeployPath: /Users/vagrant/deploy
+- NotifyUserGroups: everyone
+- NotifyEmailList: 
+- IsPublicPageEnabled: true
+- PublicInstallPageMapFormat: {{range $index, $element := .}}{{if $index}}|{{end}}{{$element.File}}=>{{$element.URL}}{{end}}
+- PermanentDownloadURLMapFormat: {{range $index, $element := .}}{{if $index}}|{{end}}{{$element.File}}=>{{$element.URL}}{{end}}
+- BuildSlug: 61ed0d1193af9f89
+- TestDeployDir: /var/folders/wp/4pf4qdmn217djs68lskdcc780000gn/T/test_results591569031
+- AppSlug: 23398a6d4ae10355
+- AddonAPIBaseURL: [REDACTED]
+- AddonAPIToken: [REDACTED]
+- GenerateUniversalApkIfNone: true
+- DebugMode: false
+- BundletoolVersion: 0.13.4
+
+
+[34;1mDeploying the content of the Deploy directory separately[0m
+
+[34;1mList of files to deploy[0m
+- /Users/vagrant/deploy/xcode-test-results-BitriseUnitTestSample.html
+
+[34;1mDeploying files[0m
+[33;1mUniversal APK generation is going to be DEPRECATED with the next major release! In case you build a bundle and you would like to
+export a universal APK to distribute it for testing (by Public install page or Ship Add-on), please use the Export Universal APK Step instead!
+You may find further information about the Step here (https://devcenter.bitrise.io/deploy/android-deploy/exporting-a-universal-apk-from-an-aab/).[0m
+
+[32;1mUploading file: /Users/vagrant/deploy/xcode-test-results-BitriseUnitTestSample.html[0m
+creating artifact
+  file size: 7958B
+uploading artifact
+finishing artifact
+
+[32;1mSuccess[0m
+You can find the Artifact on Bitrise, on the Build's page: https://app.bitrise.io/build/61ed0d1193af9f89
+A map of deployed files and their permanent download urls is now available in the Environment Variable: BITRISE_PERMANENT_DOWNLOAD_URL_MAP (value: xcode-test-results-BitriseUnitTestSample.html=>https://app.bitrise.io/artifact/b1450096cf5542be/download)
+
+
+[34;1mUpload test results[0m
+- uploading (1) test results
+[32;1mSuccess[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1[0m                                        | 30.58 sec|
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (7) cache-push@2                                                             |
++------------------------------------------------------------------------------+
+| id: cache-push                                                               |
+| version: 2.5.1                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-06-09T14:34:26Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- Paths: 
+
+/Users/vagrant/Library/Developer/Xcode/DerivedData/BitriseUnitTestSample-dmiyhnydiradzneyoefpulkgltwy/SourcePackages
+
+- IgnoredPaths: 
+
+!/Users/vagrant/Library/Developer/Xcode/DerivedData/BitriseUnitTestSample-dmiyhnydiradzneyoefpulkgltwy/SourcePackages/manifest.db
+
+- CacheAPIURL: [REDACTED]
+- FingerprintMethodID: file-content-hash
+- CompressArchive: false
+- DebugMode: false
+- StackID: osx-xcode-12.4.x
+- BuildSlug: 61ed0d1193af9f89
+
+[34;1mCleaning paths[0m
+[32;1mDone in 2.166615ms
+[0m
+[34;1mChecking previous cache status[0m
+No previous cache info found
+[32;1mDone in 55.444µs
+[0m
+[34;1mGenerating cache archive[0m
+[32;1mDone in 1.170279ms
+[0m
+[34;1mUploading cache archive[0m
+Archive file size: 3584 bytes / 0.003418 MB
+[32;1mDone in 653.954812ms
+[0m
+[32;1mTotal time: 657.918213ms[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mcache-push@2[0m                                                  | 6.55 sec |
++---+---------------------------------------------------------------+----------+
+
+
++------------------------------------------------------------------------------+
+|                               bitrise summary                                |
++---+---------------------------------------------------------------+----------+
+|   | title                                                         | time (s) |
++---+---------------------------------------------------------------+----------+
+| [34;1m-[0m | [34;1mactivate-ssh-key@4[0m                                            | 9.64 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@6[0m                                                   | 10.87 sec|
++---+---------------------------------------------------------------+----------+
+| [33;1m![0m | [33;1mcache-pull@2 (exit code: 1)[0m                                   | 5.10 sec |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/bitrise-steplib/steps-cache-pull/issues    |
+| Source: https://github.com/bitrise-steplib/steps-cache-pull.git              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mDo anything with Script step[0m                                  | 2.31 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mcertificate-and-profile-installer@1[0m                           | 18.76 sec|
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mxcode-test@2[0m                                                  | 4.1 min  |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1[0m                                        | 30.58 sec|
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mcache-push@2[0m                                                  | 6.55 sec |
++---+---------------------------------------------------------------+----------+
+| Total runtime: 5.5 min                                                       |
++------------------------------------------------------------------------------+
+
+[34;1m[0m
+[34;1mSubmitting anonymized usage information...[0m
+[34;1mFor more information visit:[0m
+[34;1mhttps://github.com/bitrise-io/bitrise-plugins-analytics/blob/master/README.md[0m
